@@ -8,5 +8,5 @@ uvicorn main:app --host 0.0.0.0 --port 8001 &
 sleep 5
 
 # Start the Streamlit frontend in the foreground
-echo "Starting Streamlit Frontend on port 8000..."
-streamlit run streamlit_app.py --server.port 8000 --server.address 0.0.0.0
+echo "Starting Streamlit Frontend on port ${PORT:-8000}..."
+streamlit run streamlit_app.py --server.port ${PORT:-8000} --server.address 0.0.0.0
