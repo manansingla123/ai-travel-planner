@@ -18,4 +18,3 @@ pytest
 langchain-google-community[places]
 
 
--e .
