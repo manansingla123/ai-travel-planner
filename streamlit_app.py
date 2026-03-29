@@ -16,9 +16,12 @@ st.set_page_config(
 
 st.title("🌍 Travel Planner Agentic Application")
 
-# Initialize chat history
+# Initialize chat history and session ID
 if "messages" not in st.session_state:
     st.session_state.messages = []
+if "thread_id" not in st.session_state:
+    import uuid
+    st.session_state.thread_id = str(uuid.uuid4())
 
 # Display chat history
 st.header("How can I help you in planning a trip? Let me know where do you want to visit.")
@@ -33,7 +36,10 @@ if submit_button and user_input.strip():
         # # Show user message
         # Show thinking spinner while backend processes
         with st.spinner("Bot is thinking..."):
-            payload = {"question": user_input}
+            payload = {
+                "question": user_input,
+                "thread_id": st.session_state.thread_id
+            }
             response = requests.post(f"{BASE_URL}/query", json=payload)
 
         if response.status_code == 200:
@@ -56,4 +62,4 @@ if submit_button and user_input.strip():
             st.error(" Bot failed to respond: " + response.text)
 
     except Exception as e:
-        raise f"The response failed due to {e}"
+        st.error(f"The response failed due to {e}")

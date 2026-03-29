@@ -20,6 +20,7 @@ app.add_middleware(
 )
 class QueryRequest(BaseModel):
     question: str
+    thread_id: str = "1"
 
 @app.post("/query")
 async def query_travel_agent(query:QueryRequest):
@@ -34,9 +35,10 @@ async def query_travel_agent(query:QueryRequest):
             f.write(png_graph)
 
         print(f"Graph saved as 'my_graph.png' in {os.getcwd()}")
-        # Assuming request is a pydantic object like: {"question": "your text"}
+        # Assuming request is a pydantic object like: {"question": "your text", "thread_id": "1"}
         messages={"messages": [query.question]}
-        output = react_app.invoke(messages)
+        config = {"configurable": {"thread_id": query.thread_id}}
+        output = react_app.invoke(messages, config=config)
 
         # If result is dict with messages:
         if isinstance(output, dict) and "messages" in output:

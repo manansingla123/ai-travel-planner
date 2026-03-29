@@ -5,37 +5,42 @@ from langchain.tools import tool
 from langchain_community.utilities.alpha_vantage import AlphaVantageAPIWrapper
 
 @tool
-def multiply(a: int, b: int) -> int:
+def multiply(a: float, b: float) -> float:
     """
-    Multiply two integers.
-
+    Multiply two numbers.
     Args:
-        a (int): The first integer.
-        b (int): The second integer.
-
+        a (float): The first number.
+        b (float): The second number.
     Returns:
-        int: The product of a and b.
+        float: The product of a and b.
     """
-    return a * b
+    return float(a) * float(b)
 
 @tool
-def add(a: int, b: int) -> int:
+def add(a: float, b: float) -> float:
     """
-    Add two integers.
-
+    Add two numbers.
     Args:
-        a (int): The first integer.
-        b (int): The second integer.
-
+        a (float): The first number.
+        b (float): The second number.
     Returns:
-        int: The sum of a and b.
+        float: The sum of a and b.
     """
-    return a + b
+    return float(a) + float(b)
 
 @tool
-def currency_converter(from_curr: str, to_curr: str, value: float)->float:
+def currency_converter(from_curr: str, to_curr: str, value: float) -> float:
+    """
+    Convert currency from one to another.
+    Args:
+        from_curr (str): The currency index to convert from.
+        to_curr (str): The currency index to convert to.
+        value (float): The value to convert.
+    Returns:
+        float: The converted value.
+    """
     os.environ["ALPHAVANTAGE_API_KEY"] = os.getenv('ALPHAVANTAGE_API_KEY')
     alpha_vantage = AlphaVantageAPIWrapper()
     response = alpha_vantage._get_exchange_rate(from_curr, to_curr)
     exchange_rate = response['Realtime Currency Exchange Rate']['5. Exchange Rate']
-    return value * float(exchange_rate)
+    return float(value) * float(exchange_rate)

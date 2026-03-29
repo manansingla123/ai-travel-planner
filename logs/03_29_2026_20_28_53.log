@@ -1,0 +1,12 @@
+[ 2026-03-29 20:29:06,265 ] 194 googlemaps.client - INFO - API queries_quota: 60
+[ 2026-03-29 20:29:06,389 ] 56 agent.agentic_workflow - INFO - Building the graph with persistence.
+[ 2026-03-29 20:29:06,413 ] 70 agent.agentic_workflow - INFO - Graph built and compiled successfully.
+[ 2026-03-29 20:29:08,726 ] 44 agent.agentic_workflow - INFO - Agent started processing.
+[ 2026-03-29 20:29:11,733 ] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+[ 2026-03-29 20:29:11,794 ] 48 agent.agentic_workflow - INFO - Agent successfully generated a response.
+[ 2026-03-29 20:29:13,487 ] 44 agent.agentic_workflow - INFO - Agent started processing.
+[ 2026-03-29 20:29:16,136 ] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+[ 2026-03-29 20:29:16,139 ] 48 agent.agentic_workflow - INFO - Agent successfully generated a response.
+[ 2026-03-29 20:29:17,816 ] 44 agent.agentic_workflow - INFO - Agent started processing.
+[ 2026-03-29 20:29:21,586 ] 1025 httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+[ 2026-03-29 20:29:21,589 ] 48 agent.agentic_workflow - INFO - Agent successfully generated a response.
